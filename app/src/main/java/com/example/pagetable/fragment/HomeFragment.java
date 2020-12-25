@@ -10,6 +10,7 @@ import com.example.pagetable.R;
 import com.example.pagetable.adatper.BannerSingleAdatper;
 import com.example.pagetable.adatper.BrandlGridAdatper;
 import com.example.pagetable.adatper.ChannelGridAdatper;
+import com.example.pagetable.adatper.NewGoodGridAdatper;
 import com.example.pagetable.adatper.PinSingleAdatper;
 import com.example.pagetable.adatper.SouSingleAdatper;
 import com.example.pagetable.adatper.XinSingleAdatper;
@@ -31,7 +32,8 @@ public class HomeFragment extends FragmentBase<HomePresenter> implements Contrac
     private ArrayList<ListBean.DataBean.BrandListBean> brandListBeans;
     private ChannelGridAdatper channelGridAdatper;
     private BrandlGridAdatper brandlGridAdatper;
-
+    private ArrayList<ListBean.DataBean.NewGoodsListBean> newList;
+    private NewGoodGridAdatper newGoodGridAdatper;
 
 
     @Override
@@ -90,6 +92,12 @@ public class HomeFragment extends FragmentBase<HomePresenter> implements Contrac
         singleLayoutHelper3.setPadding(20, 20, 20, 20);// 设置LayoutHelper的子元素相对LayoutHelper边缘的距离
         XinSingleAdatper xinSingleAdatper = new XinSingleAdatper(getActivity(), singleLayoutHelper4);
 
+        GridLayoutHelper gridLayoutHelper3 = new GridLayoutHelper(2);
+        gridLayoutHelper3.setPadding(20, 20, 20, 20);// 设置LayoutHelper的子元素相对LayoutHelper边缘的距离//        gridLayoutHelper.setAspectRatio(6);// 设置设置布局内每行布局的宽与高的比
+        gridLayoutHelper3.setSpanCount(2);// 设置每行多少个网格;
+        newList = new ArrayList<>();
+        newGoodGridAdatper = new NewGoodGridAdatper(getActivity(), gridLayoutHelper3, newList);
+
 
         adapter = new DelegateAdapter(manager, false);
         adapter.addAdapter(souSingleAdatper);//第一行
@@ -98,6 +106,7 @@ public class HomeFragment extends FragmentBase<HomePresenter> implements Contrac
         adapter.addAdapter(pinSingleAdatper);//第四行
         adapter.addAdapter(brandlGridAdatper);//第五行
         adapter.addAdapter(xinSingleAdatper);//第六行
+        adapter.addAdapter(newGoodGridAdatper);//第七行
         rel.setLayoutManager(manager);
         rel.setAdapter(adapter);
     }
@@ -120,6 +129,10 @@ public class HomeFragment extends FragmentBase<HomePresenter> implements Contrac
         List<ListBean.DataBean.BrandListBean> brandList = listBean.getData().getBrandList();
         brandListBeans.addAll(brandList);
         brandlGridAdatper.notifyDataSetChanged();
+
+        List<ListBean.DataBean.NewGoodsListBean> newGoodsList = listBean.getData().getNewGoodsList();
+        newList.addAll(newGoodsList);
+        newGoodGridAdatper.notifyDataSetChanged();
 
         adapter.notifyDataSetChanged();
 
