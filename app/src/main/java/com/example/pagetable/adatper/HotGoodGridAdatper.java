@@ -19,16 +19,17 @@ import com.example.pagetable.bean.ListBean;
 
 import java.util.ArrayList;
 
-public class NewGoodGridAdatper extends DelegateAdapter.Adapter {
+public class HotGoodGridAdatper extends DelegateAdapter.Adapter {
 
     private Context context;
     private GridLayoutHelper gridLayoutHelper;
-    private ArrayList<ListBean.DataBean.NewGoodsListBean> newGoods;
+    private ArrayList<ListBean.DataBean.HotGoodsListBean> hotGoodsListBeans;
 
-    public NewGoodGridAdatper(Context context, GridLayoutHelper gridLayoutHelper, ArrayList<ListBean.DataBean.NewGoodsListBean> newGoods) {
+
+    public HotGoodGridAdatper(Context context, GridLayoutHelper gridLayoutHelper, ArrayList<ListBean.DataBean.HotGoodsListBean> hotGoodsListBeans) {
         this.context = context;
         this.gridLayoutHelper = gridLayoutHelper;
-        this.newGoods = newGoods;
+        this.hotGoodsListBeans = hotGoodsListBeans;
     }
 
     @Override
@@ -39,33 +40,39 @@ public class NewGoodGridAdatper extends DelegateAdapter.Adapter {
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.home_newgood, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.home_hot, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         ViewHolder viewHolder = (ViewHolder) holder;
-        ListBean.DataBean.NewGoodsListBean newGoodsListBean = newGoods.get(position);
-        viewHolder.newName.setText(newGoodsListBean.getName());
-        viewHolder.newPrice.setText("￥"+newGoodsListBean.getRetail_price());
-        Glide.with(context).load(newGoodsListBean.getList_pic_url()).into(viewHolder.newImg);
+        ListBean.DataBean.HotGoodsListBean listBean = hotGoodsListBeans.get(position);
+        viewHolder.hotBrief.setText(listBean.getGoods_brief());
+        viewHolder.hotName.setText(listBean.getName());
+        viewHolder.hotPrice.setText("￥"+listBean.getRetail_price());
+        Glide.with(context).load(listBean.getList_pic_url()).into(viewHolder.hotUrl);
     }
 
     @Override
     public int getItemCount() {
-        return newGoods.size();
+        return hotGoodsListBeans.size();
     }
 
+
     class ViewHolder extends RecyclerView.ViewHolder {
-        private ImageView newImg;
-        private TextView newName;
-        private TextView newPrice;
+        private ImageView hotImg;
+        private ImageView hotUrl;
+        private TextView hotName;
+        private TextView hotBrief;
+        private TextView hotPrice;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            newImg = itemView.findViewById(R.id.new_img);
-            newName = itemView.findViewById(R.id.new_name);
-            newPrice = itemView.findViewById(R.id.new_price);
+            hotImg = itemView.findViewById(R.id.hot_img);
+            hotUrl = itemView.findViewById(R.id.hot_url);
+            hotName = itemView.findViewById(R.id.hot_name);
+            hotBrief = itemView.findViewById(R.id.hot_brief);
+            hotPrice = itemView.findViewById(R.id.hot_price);
         }
     }
 }
