@@ -23,18 +23,18 @@ import java.util.ArrayList;
 public class BannerSingleAdatper extends DelegateAdapter.Adapter {
 
     private Context context;
-    private SingleLayoutHelper singleLayoutHelper;
+    private SingleLayoutHelper singleLayout;
     private ArrayList<ListBean.DataBean.BannerBean> banner;
 
-    public BannerSingleAdatper(Context context, SingleLayoutHelper singleLayoutHelper, ArrayList<ListBean.DataBean.BannerBean> banner) {
+    public BannerSingleAdatper(Context context, SingleLayoutHelper singleLayout, ArrayList<ListBean.DataBean.BannerBean> banner) {
         this.context = context;
-        this.singleLayoutHelper = singleLayoutHelper;
+        this.singleLayout = singleLayout;
         this.banner = banner;
     }
 
     @Override
     public LayoutHelper onCreateLayoutHelper() {
-        return singleLayoutHelper;
+        return singleLayout;
     }
 
     @NonNull
