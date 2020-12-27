@@ -21,9 +21,12 @@ public abstract class FragmentBase<P extends BaseParsenter> extends Fragment imp
             present.atachView(this);
             initView(view);
             initDate();
+            initLister();
         }
         return view;
     }
+
+    protected abstract void initLister();
 
     protected abstract P getfrag();
 

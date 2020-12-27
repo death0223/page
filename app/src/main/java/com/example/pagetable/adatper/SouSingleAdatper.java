@@ -20,6 +20,11 @@ public class SouSingleAdatper extends DelegateAdapter.Adapter {
 
     private Context context;
     private SingleLayoutHelper singleLayoutHelper;
+    private OnClick onClick;
+
+    public void setOnClick(OnClick onClick) {
+        this.onClick = onClick;
+    }
 
     public SouSingleAdatper(Context context, SingleLayoutHelper singleLayoutHelper) {
         this.context = context;
@@ -40,7 +45,12 @@ public class SouSingleAdatper extends DelegateAdapter.Adapter {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClick.onClick(position);
+            }
+        });
     }
 
     @Override
@@ -56,5 +66,9 @@ public class SouSingleAdatper extends DelegateAdapter.Adapter {
             sou_img=itemView.findViewById(R.id.sou_img);
             sou_tv=itemView.findViewById(R.id.sou_tv);
         }
+    }
+
+    public interface OnClick {
+        void onClick(int position);
     }
 }
