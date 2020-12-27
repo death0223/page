@@ -9,13 +9,16 @@ import com.alibaba.android.vlayout.layout.SingleLayoutHelper;
 import com.example.pagetable.R;
 import com.example.pagetable.adatper.BannerSingleAdatper;
 import com.example.pagetable.adatper.BrandlGridAdatper;
+import com.example.pagetable.adatper.CategorySingleAdatper;
 import com.example.pagetable.adatper.ChannelGridAdatper;
 import com.example.pagetable.adatper.HotGoodGridAdatper;
 import com.example.pagetable.adatper.NewGoodGridAdatper;
 import com.example.pagetable.adatper.PersonSingleAdatper;
 import com.example.pagetable.adatper.PinSingleAdatper;
 import com.example.pagetable.adatper.SouSingleAdatper;
+import com.example.pagetable.adatper.TopicSingleAdatper;
 import com.example.pagetable.adatper.XinSingleAdatper;
+import com.example.pagetable.adatper.ZhuanSingleAdatper;
 import com.example.pagetable.base.FragmentBase;
 import com.example.pagetable.bean.ListBean;
 import com.example.pagetable.contract.Contract;
@@ -38,6 +41,11 @@ public class HomeFragment extends FragmentBase<HomePresenter> implements Contrac
     private NewGoodGridAdatper newGoodGridAdatper;
     private ArrayList<ListBean.DataBean.HotGoodsListBean> hotGoodsListBeans;
     private HotGoodGridAdatper hotGoodGridAdatper;
+    private ArrayList<ListBean.DataBean.TopicListBean> topicListBeans;
+    private TopicSingleAdatper topicSingleAdatper;
+    private CategorySingleAdatper categorySingleAdatper;
+    private ArrayList<ListBean.DataBean.CategoryListBean> categoryListBeans;
+    private ArrayList<ListBean.DataBean.CategoryListBean.GoodsListBean> goodsListBeans;
 
 
     @Override
@@ -109,12 +117,33 @@ public class HomeFragment extends FragmentBase<HomePresenter> implements Contrac
         singleLayoutHelper5.setPadding(20, 20, 20, 20);// 设置LayoutHelper的子元素相对LayoutHelper边缘的距离
         PersonSingleAdatper personSingleAdatper = new PersonSingleAdatper(getActivity(), singleLayoutHelper5);
 
-//        //第九行
+        //第九行
         GridLayoutHelper gridLayoutHelper4 = new GridLayoutHelper(1);
         gridLayoutHelper4.setPadding(20, 20, 20, 20);// 设置LayoutHelper的子元素相对LayoutHelper边缘的距离//        gridLayoutHelper.setAspectRatio(6);// 设置设置布局内每行布局的宽与高的比
         gridLayoutHelper4.setSpanCount(1);// 设置每行多少个网格;
         hotGoodsListBeans = new ArrayList<>();
         hotGoodGridAdatper = new HotGoodGridAdatper(getActivity(), gridLayoutHelper4, hotGoodsListBeans);
+
+        //第十行
+        SingleLayoutHelper singleLayoutHelper6 = new SingleLayoutHelper();
+        singleLayoutHelper6.setItemCount(1);// 设置布局里Item个数
+        singleLayoutHelper6.setPadding(20, 20, 20, 20);// 设置LayoutHelper的子元素相对LayoutHelper边缘的距离
+        ZhuanSingleAdatper zhuanSingleAdatper = new ZhuanSingleAdatper(getActivity(), singleLayoutHelper6);
+
+        //第十一行
+        SingleLayoutHelper singleLayoutHelper7 = new SingleLayoutHelper();
+        singleLayoutHelper7.setItemCount(1);// 设置布局里Item个数
+        singleLayoutHelper7.setPadding(20, 20, 20, 20);// 设置LayoutHelper的子元素相对LayoutHelper边缘的距离
+        topicListBeans = new ArrayList<>();
+        topicSingleAdatper = new TopicSingleAdatper(getActivity(), topicListBeans,singleLayoutHelper7 );
+
+        //第十二行
+        SingleLayoutHelper singleLayoutHelper8 = new SingleLayoutHelper();
+        singleLayoutHelper8.setItemCount(1);// 设置布局里Item个数
+        singleLayoutHelper8.setPadding(20, 20, 20, 20);// 设置LayoutHelper的子元素相对LayoutHelper边缘的距离
+        categoryListBeans = new ArrayList<>();
+        categorySingleAdatper = new CategorySingleAdatper(getActivity(),singleLayoutHelper8, categoryListBeans );
+
 
         adapter = new DelegateAdapter(manager, false);
         adapter.addAdapter(souSingleAdatper);//第一行
@@ -123,9 +152,12 @@ public class HomeFragment extends FragmentBase<HomePresenter> implements Contrac
         adapter.addAdapter(pinSingleAdatper);//第四行
         adapter.addAdapter(brandlGridAdatper);//第五行
         adapter.addAdapter(xinSingleAdatper);//第六行
-        adapter.addAdapter(this.newGoodGridAdatper);//第七行
+        adapter.addAdapter(newGoodGridAdatper);//第七行
         adapter.addAdapter(personSingleAdatper);//第八行
         adapter.addAdapter(hotGoodGridAdatper);//第九行
+        adapter.addAdapter(zhuanSingleAdatper);//第十行
+        adapter.addAdapter(topicSingleAdatper);//第十一行
+        adapter.addAdapter(categorySingleAdatper);//第十二行
         rel.setLayoutManager(manager);
         rel.setAdapter(adapter);
     }
@@ -156,6 +188,16 @@ public class HomeFragment extends FragmentBase<HomePresenter> implements Contrac
         List<ListBean.DataBean.HotGoodsListBean> hotGoodsList = listBean.getData().getHotGoodsList();
         hotGoodsListBeans.addAll(hotGoodsList);
         hotGoodGridAdatper.notifyDataSetChanged();
+
+        List<ListBean.DataBean.TopicListBean> topicList = listBean.getData().getTopicList();
+        topicListBeans.addAll(topicList);
+        topicSingleAdatper.notifyDataSetChanged();
+
+
+
+        List<ListBean.DataBean.CategoryListBean> categoryList = listBean.getData().getCategoryList();
+        categoryListBeans.addAll(categoryList);
+        categorySingleAdatper.notifyDataSetChanged();
 
         adapter.notifyDataSetChanged();
 

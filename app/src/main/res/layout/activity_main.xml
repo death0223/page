@@ -22,47 +22,56 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/rb_home"
+            android:checked="true"
             android:layout_weight="1"
             android:button="@null"
             android:text="首页"
+            android:textSize="10dp"
             android:gravity="center"
-            android:drawableTop="@drawable/a" />
+            android:drawableTop="@drawable/home_select_one" />
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/rb_zhuti"
             android:layout_weight="1"
+            android:checked="true"
             android:button="@null"
+            android:textSize="10dp"
             android:text="专题"
             android:gravity="center"
-            android:drawableTop="@drawable/b" />
+            android:drawableTop="@drawable/home_select_two" />
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/rb_fenlei"
             android:layout_weight="1"
             android:button="@null"
+            android:textSize="10dp"
+            android:checked="true"
             android:text="分类"
             android:gravity="center"
-            android:drawableTop="@drawable/c" />
+            android:drawableTop="@drawable/home_select_three" />
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/rb_shoping"
+            android:checked="true"
             android:layout_weight="1"
             android:button="@null"
+            android:textSize="10dp"
             android:text="购物车"
             android:gravity="center"
-            android:drawableTop="@drawable/d" />
+            android:drawableTop="@drawable/home_select_four" />
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/rb_my"
             android:layout_weight="1"
+            android:textSize="10dp"
             android:button="@null"
             android:text="我的"
             android:gravity="center"
-            android:drawableTop="@drawable/e" />
+            android:drawableTop="@drawable/home_select_fifth" />
     </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

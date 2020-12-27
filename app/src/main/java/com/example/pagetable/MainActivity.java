@@ -1,6 +1,7 @@
 package com.example.pagetable;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -26,7 +27,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initDate() {
-
+        rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                switch (i){
+                    case R.id.rb_home:
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.fl,new HomeFragment())
+                                .commit();
+                        break;
+                    case R.id.rb_zhuti:
+                        break;
+                    case R.id.rb_fenlei:
+                        break;
+                    case R.id.rb_shoping:
+                        break;
+                    case R.id.rb_my:
+                        break;
+                }
+            }
+        });
     }
 
     private void initView() {
@@ -41,4 +61,6 @@ public class MainActivity extends AppCompatActivity {
                 .replace(R.id.fl,new HomeFragment())
                 .commit();
     }
+
+
 }
