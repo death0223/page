@@ -1,6 +1,8 @@
 package com.example.pagetable.fragment;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.graphics.Color;
 import android.view.View;
 import com.alibaba.android.vlayout.DelegateAdapter;
 import com.alibaba.android.vlayout.VirtualLayoutManager;
@@ -68,6 +70,7 @@ public class HomeFragment extends FragmentBase<HomePresenter> implements Contrac
         //第一行
         SingleLayoutHelper singleLayoutHelper = new SingleLayoutHelper();
         singleLayoutHelper.setItemCount(1);// 设置布局里Item个数
+        singleLayoutHelper.setBgColor(Color.WHITE);
         singleLayoutHelper.setPadding(20, 20, 20, 20);// 设置LayoutHelper的子元素相对LayoutHelper边缘的距离
         SouSingleAdatper souSingleAdatper = new SouSingleAdatper(getActivity(), singleLayoutHelper);
 
@@ -76,71 +79,84 @@ public class HomeFragment extends FragmentBase<HomePresenter> implements Contrac
         singleLayoutHelper2.setItemCount(1);// 设置布局里Item个数
         singleLayoutHelper2.setPadding(10, 10, 10, 10);// 设置LayoutHelper的子元素相对LayoutHelper边缘的距离
         bannerlist = new ArrayList<>();
+        singleLayoutHelper2.setBgColor(Color.WHITE);
         BannerSingleAdatper bannerSingleAdatper = new BannerSingleAdatper(getActivity(), singleLayoutHelper2, this.bannerlist);
 
         //第三行
         GridLayoutHelper gridLayoutHelper = new GridLayoutHelper(5);
-        gridLayoutHelper.setPadding(10, 10, 10, 10);// 设置LayoutHelper的子元素相对LayoutHelper边缘的距离//        gridLayoutHelper.setAspectRatio(6);// 设置设置布局内每行布局的宽与高的比
+        gridLayoutHelper.setPadding(45, 45, 45, 45);// 设置LayoutHelper的子元素相对LayoutHelper边缘的距离//        gridLayoutHelper.setAspectRatio(6);// 设置设置布局内每行布局的宽与高的比
         gridLayoutHelper.setSpanCount(5);// 设置每行多少个网格;
         title = new ArrayList<>();
+        gridLayoutHelper.setBgColor(Color.WHITE);
         channelGridAdatper = new ChannelGridAdatper(getActivity(),gridLayoutHelper,title);
 
         //第四行
         SingleLayoutHelper singleLayoutHelper3 = new SingleLayoutHelper();
         singleLayoutHelper3.setItemCount(1);// 设置布局里Item个数
-        singleLayoutHelper3.setPadding(20, 20, 20, 20);// 设置LayoutHelper的子元素相对LayoutHelper边缘的距离
+        singleLayoutHelper3.setMarginTop(30);
+        singleLayoutHelper3.setBgColor(Color.WHITE);
+        singleLayoutHelper3.setPadding(20, 20, 20, 30);// 设置LayoutHelper的子元素相对LayoutHelper边缘的距离
         PinSingleAdatper pinSingleAdatper = new PinSingleAdatper(getActivity(), singleLayoutHelper3);
 
         //第五行
         GridLayoutHelper gridLayoutHelper2 = new GridLayoutHelper(2);
-        gridLayoutHelper2.setPadding(20, 20, 20, 20);// 设置LayoutHelper的子元素相对LayoutHelper边缘的距离//        gridLayoutHelper.setAspectRatio(6);// 设置设置布局内每行布局的宽与高的比
+        gridLayoutHelper2.setPadding(20, 30, 20, 20);// 设置LayoutHelper的子元素相对LayoutHelper边缘的距离//        gridLayoutHelper.setAspectRatio(6);// 设置设置布局内每行布局的宽与高的比
         gridLayoutHelper2.setSpanCount(2);// 设置每行多少个网格;
+        gridLayoutHelper2.setBgColor(Color.WHITE);
         brandListBeans = new ArrayList<>();
         brandlGridAdatper = new BrandlGridAdatper(getActivity(),gridLayoutHelper2,brandListBeans);
 
         //第六行
         SingleLayoutHelper singleLayoutHelper4 = new SingleLayoutHelper();
-        singleLayoutHelper3.setItemCount(1);// 设置布局里Item个数
-        singleLayoutHelper3.setPadding(20, 20, 20, 20);// 设置LayoutHelper的子元素相对LayoutHelper边缘的距离
+        singleLayoutHelper4.setItemCount(1);// 设置布局里Item个数
+        singleLayoutHelper4.setBgColor(Color.WHITE);
+        singleLayoutHelper4.setPadding(20, 20, 20, 40);// 设置LayoutHelper的子元素相对LayoutHelper边缘的距离
         XinSingleAdatper xinSingleAdatper = new XinSingleAdatper(getActivity(), singleLayoutHelper4);
 
         //第七行
         GridLayoutHelper gridLayoutHelper3 = new GridLayoutHelper(2);
-        gridLayoutHelper3.setPadding(15, 15, 15, 15);// 设置LayoutHelper的子元素相对LayoutHelper边缘的距离//        gridLayoutHelper.setAspectRatio(6);// 设置设置布局内每行布局的宽与高的比
+        gridLayoutHelper3.setPadding(15, 25, 15, 15);// 设置LayoutHelper的子元素相对LayoutHelper边缘的距离//        gridLayoutHelper.setAspectRatio(6);// 设置设置布局内每行布局的宽与高的比
         gridLayoutHelper3.setSpanCount(2);// 设置每行多少个网格;
+        gridLayoutHelper3.setBgColor(Color.WHITE);
         newList = new ArrayList<>();
         newGoodGridAdatper = new NewGoodGridAdatper(getActivity(), gridLayoutHelper3, newList);
 
         //第八行
         SingleLayoutHelper singleLayoutHelper5 = new SingleLayoutHelper();
         singleLayoutHelper5.setItemCount(1);// 设置布局里Item个数
-        singleLayoutHelper5.setPadding(20, 20, 20, 20);// 设置LayoutHelper的子元素相对LayoutHelper边缘的距离
+        singleLayoutHelper5.setBgColor(Color.WHITE);
+        singleLayoutHelper5.setMarginTop(30);
+        singleLayoutHelper5.setPadding(20, 20, 20, 40);// 设置LayoutHelper的子元素相对LayoutHelper边缘的距离
         PersonSingleAdatper personSingleAdatper = new PersonSingleAdatper(getActivity(), singleLayoutHelper5);
 
         //第九行
         GridLayoutHelper gridLayoutHelper4 = new GridLayoutHelper(1);
-        gridLayoutHelper4.setPadding(20, 20, 20, 20);// 设置LayoutHelper的子元素相对LayoutHelper边缘的距离//        gridLayoutHelper.setAspectRatio(6);// 设置设置布局内每行布局的宽与高的比
+        gridLayoutHelper4.setPadding(20, 30, 20, 20);// 设置LayoutHelper的子元素相对LayoutHelper边缘的距离//        gridLayoutHelper.setAspectRatio(6);// 设置设置布局内每行布局的宽与高的比
         gridLayoutHelper4.setSpanCount(1);// 设置每行多少个网格;
         hotGoodsListBeans = new ArrayList<>();
+        gridLayoutHelper4.setBgColor(Color.WHITE);
         hotGoodGridAdatper = new HotGoodGridAdatper(getActivity(), gridLayoutHelper4, hotGoodsListBeans);
 
         //第十行
         SingleLayoutHelper singleLayoutHelper6 = new SingleLayoutHelper();
         singleLayoutHelper6.setItemCount(1);// 设置布局里Item个数
-        singleLayoutHelper6.setPadding(20, 20, 20, 20);// 设置LayoutHelper的子元素相对LayoutHelper边缘的距离
+        singleLayoutHelper6.setBgColor(Color.WHITE);
+        singleLayoutHelper6.setMarginTop(30);
+        singleLayoutHelper6.setPadding(20, 20, 20, 40);// 设置LayoutHelper的子元素相对LayoutHelper边缘的距离
         ZhuanSingleAdatper zhuanSingleAdatper = new ZhuanSingleAdatper(getActivity(), singleLayoutHelper6);
 
         //第十一行
         SingleLayoutHelper singleLayoutHelper7 = new SingleLayoutHelper();
         singleLayoutHelper7.setItemCount(1);// 设置布局里Item个数
-        singleLayoutHelper7.setPadding(20, 20, 20, 20);// 设置LayoutHelper的子元素相对LayoutHelper边缘的距离
+        singleLayoutHelper7.setBgColor(Color.WHITE);
+        singleLayoutHelper7.setPadding(30, 30, 30, 30);// 设置LayoutHelper的子元素相对LayoutHelper边缘的距离
         topicListBeans = new ArrayList<>();
         topicSingleAdatper = new TopicSingleAdatper(getActivity(), topicListBeans,singleLayoutHelper7 );
 
         //第十二行
         SingleLayoutHelper singleLayoutHelper8 = new SingleLayoutHelper();
-        singleLayoutHelper8.setItemCount(1);// 设置布局里Item个数
-        singleLayoutHelper8.setPadding(20, 20, 20, 20);// 设置LayoutHelper的子元素相对LayoutHelper边缘的距离
+        singleLayoutHelper8.setItemCount(7);// 设置布局里Item个数
+        singleLayoutHelper8.setBgColor(Color.WHITE);
         categoryListBeans = new ArrayList<>();
         categorySingleAdatper = new CategorySingleAdatper(getActivity(),singleLayoutHelper8, categoryListBeans );
 

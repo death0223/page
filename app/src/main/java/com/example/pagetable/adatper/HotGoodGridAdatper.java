@@ -61,14 +61,14 @@ public class HotGoodGridAdatper extends DelegateAdapter.Adapter {
 
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        private ImageView hotImg;
+        private TextView hotTv;
         private ImageView hotUrl;
         private TextView hotName;
         private TextView hotBrief;
         private TextView hotPrice;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            hotImg = itemView.findViewById(R.id.hot_img);
+            hotTv = itemView.findViewById(R.id.hot_tv);
             hotUrl = itemView.findViewById(R.id.hot_url);
             hotName = itemView.findViewById(R.id.hot_name);
             hotBrief = itemView.findViewById(R.id.hot_brief);

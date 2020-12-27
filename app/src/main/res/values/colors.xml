@@ -7,7 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="灰色">#CCC9C9</color>
+    <color name="灰色">#ECEBEB</color>
     <color name="红色">#E80606</color>
-    <color name="浅灰">#D8D6D6</color>
+    <color name="浅灰">#f8f8f8</color>
 </resources>

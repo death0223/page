@@ -7,9 +7,11 @@ import android.widget.RadioGroup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.pagetable.base.ActivityBase;
+import com.example.pagetable.base.BaseParsenter;
 import com.example.pagetable.fragment.HomeFragment;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends ActivityBase {
 
     private RadioGroup rg;
     private RadioButton rbHome;
@@ -26,7 +28,12 @@ public class MainActivity extends AppCompatActivity {
         initDate();
     }
 
-    private void initDate() {
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_main;
+    }
+
+    protected void initDate() {
         rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
@@ -49,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void initView() {
+    protected void initView() {
         rg = findViewById(R.id.rg);
         rbHome = findViewById(R.id.rb_home);
         rbZhuti = findViewById(R.id.rb_zhuti);
@@ -60,6 +67,11 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fl,new HomeFragment())
                 .commit();
+    }
+
+    @Override
+    protected BaseParsenter add() {
+        return new BaseParsenter();
     }
 
 
